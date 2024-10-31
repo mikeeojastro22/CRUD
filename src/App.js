@@ -1,23 +1,32 @@
-import logo from './logo.svg';
+import { useState } from 'react';
 import './App.css';
+import data from './assets/task-list.json';
+import AddTask from './components/AddTask';
 
 function App() {
+
+  const [tasks, setTasks] = useState(data); // data is an array of objects/tasks
+  const [count, setCount] = useState(tasks.length);
+
+  const handleTasks = (newTask) => {
+  }
+
+  const handleDeleteTask = (taskId) => {
+
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {
+        tasks.map((task) => {
+          return (
+            <div key={task.id}> 
+              <span>{task.task_name}</span>
+            </div>
+          );
+        })
+      }
+
     </div>
   );
 }
